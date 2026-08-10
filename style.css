@@ -484,7 +484,7 @@ body {
 .solution-dot.active {
   width: 25px;
   border-radius: 10px;
-  background: #f58220;
+  background: #2196f3;
 }
 
 @media (max-width: 991px) {
