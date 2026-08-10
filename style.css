@@ -335,36 +335,39 @@ body {
   max-width: 500px;
 }
 
-.solutions-slider {
+.solutions-carousel {
   position: relative;
+  width: 100%;
+}
+
+.solutions-viewport {
+  width: 100%;
+  overflow: hidden;
+  padding: 20px 0 35px;
+}
+
+.solutions-track {
+  display: flex;
+
+  gap: 25px;
+
+  transition: transform 0.65s cubic-bezier(0.65, 0, 0.35, 1);
+  will-change: transform;
 }
 
 .solution-card {
-  display: none;
-  position: relative;
-  min-height: 470px;
+  flex: 0 0 calc(100% - 160px);
+  min-height: 450px;
   padding: 60px;
   background: #f7f7f7;
   border-radius: 24px;
-  overflow: hidden;
   border: 1px solid #eeeeee;
-}
-
-.solution-card.active {
-  display: block;
-  animation: solutionFade 0.5s ease;
-}
-
-@keyframes solutionFade {
-  from {
-    opacity: 0;
-    transform: translateX(25px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  position: relative;
+  overflow: hidden;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease,
+    filter 0.6s ease;
 }
 
 .solution-number {
@@ -420,24 +423,31 @@ body {
   border-radius: 30px;
   font-size: 0.85rem;
   color: #333;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
-.solution-controls {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 30px;
+.solution-services span:hover {
+  background: #2196f3;
+  border-color: #2196f3;
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(245, 130, 32, 0.18);
 }
 
 .solution-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 50px;
-  height: 50px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   border: 1px solid #ddd;
-  background: #fff;
+  background: #ffffff;
   font-size: 1.2rem;
   cursor: pointer;
   z-index: 10;
@@ -450,16 +460,17 @@ body {
 
 .solution-arrow:hover {
   background: #111;
-  color: #fff;
+  color: #ffffff;
   border-color: #111;
+  transform: translateY(-50%) scale(1.05);
 }
 
 .solution-prev {
-  left: -75px;
+  left: 5px;
 }
 
 .solution-next {
-  right: -75px;
+  right: 5px;
 }
 
 .solution-dots {
@@ -467,7 +478,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 8px;
-  margin-top: 25px;
+  margin-top: 10px;
 }
 
 .solution-dot {
@@ -498,50 +509,53 @@ body {
   }
 
   .solution-card {
-    min-height: 520px;
-    padding: 40px 30px;
+    flex-basis: calc(100% - 80px);
+    min-height: 500px;
+    padding: 45px 35px;
   }
 
   .solution-number {
     top: 25px;
-    right: 25px;
+    right: 30px;
     font-size: 4rem;
   }
 
   .solution-content h3 {
-    font-size: 2.1rem;
+    font-size: 2.2rem;
   }
+}
 
+@media (max-width: 576px) {
+  .solutions-section {
+    padding: 80px 0;
+  }
+  .solutions-viewport {
+    padding: 10px 0 25px;
+  }
+  .solutions-track {
+    gap: 15px;
+  }
+  .solution-card {
+    flex-basis: 100%;
+    min-height: 500px;
+    padding: 35px 25px;
+  }
+  .solution-number {
+    font-size: 3.5rem;
+    top: 20px;
+    right: 20px;
+  }
+  .solution-content h3 {
+    font-size: 2rem;
+  }
+  .solution-arrow {
+    width: 44px;
+    height: 44px;
+  }
   .solution-prev {
-    left: 15px;
+    left: 10px;
   }
-
   .solution-next {
-    right: 15px;
+    right: 10px;
   }
-}
-
-.solution-services span {
-  padding: 10px 16px;
-  background: #ffffff;
-  border: 1px solid #e5e5e5;
-  border-radius: 30px;
-  font-size: 0.85rem;
-  color: #333;
-  cursor: default;
-
-  transition:
-    background-color 0.25s ease,
-    color 0.25s ease,
-    border-color 0.25s ease,
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
-}
-
-.solution-services span:hover {
-  background: #90caf9;
-  border-color: #90caf9;
-  color: #ffffff;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(245, 130, 32, 0.18);
 }
