@@ -430,25 +430,44 @@ body {
 }
 
 .solution-arrow {
-  width: 48px;
-  height: 48px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   border: 1px solid #ddd;
-  background: white;
+  background: #fff;
   font-size: 1.2rem;
   cursor: pointer;
-  transition: 0.3s;
+  z-index: 10;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
 }
 
 .solution-arrow:hover {
   background: #111;
-  color: white;
+  color: #fff;
   border-color: #111;
+}
+
+.solution-prev {
+  left: -75px;
+}
+
+.solution-next {
+  right: -75px;
 }
 
 .solution-dots {
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 8px;
+  margin-top: 25px;
 }
 
 .solution-dot {
@@ -465,7 +484,7 @@ body {
 .solution-dot.active {
   width: 25px;
   border-radius: 10px;
-  background: #2196f3;
+  background: #f58220;
 }
 
 @media (max-width: 991px) {
@@ -475,26 +494,30 @@ body {
 
   .solutions-title {
     font-size: 2.4rem;
-
     margin-bottom: 35px;
   }
 
   .solution-card {
     min-height: 520px;
-
     padding: 40px 30px;
   }
 
   .solution-number {
     top: 25px;
-
     right: 25px;
-
     font-size: 4rem;
   }
 
   .solution-content h3 {
     font-size: 2.1rem;
+  }
+
+  .solution-prev {
+    left: 15px;
+  }
+
+  .solution-next {
+    right: 15px;
   }
 }
 
