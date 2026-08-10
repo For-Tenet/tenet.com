@@ -177,35 +177,24 @@ body {
 
 .hero-card {
   width: 420px;
-
   background: white;
-
   border-radius: 20px;
-
   padding: 35px;
-
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-
   border: 1px solid #ececec;
 }
 
 .solution-item {
   background: #fafafa;
-
   border-radius: 12px;
-
   padding: 14px 18px;
-
   margin-bottom: 15px;
-
   transition: 0.3s;
 }
 
 .solution-item:hover {
   background: #90caf9;
-
   color: white;
-
   transform: translateX(8px);
 }
 
@@ -252,12 +241,9 @@ body {
 .section-label {
   display: inline-block;
   margin-bottom: 20px;
-
   color: #2196f3;
-
   font-size: 0.8rem;
   font-weight: 600;
-
   letter-spacing: 1.5px;
 }
 
@@ -265,9 +251,7 @@ body {
   font-size: 3rem;
   line-height: 1.2;
   font-weight: 600;
-
   color: #111;
-
   margin: 0;
 }
 
@@ -275,20 +259,15 @@ body {
   font-size: 1.6rem;
   line-height: 1.5;
   font-weight: 500;
-
   color: #222;
-
   margin-bottom: 25px;
 }
 
 .about-description {
   max-width: 560px;
-
   font-size: 1rem;
   line-height: 1.8;
-
   color: #6b6b6b;
-
   margin-bottom: 30px;
 }
 
@@ -296,18 +275,14 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-
   color: #111;
-
   font-weight: 600;
   text-decoration: none;
-
   transition: 0.3s;
 }
 
 .about-link span {
   font-size: 1.2rem;
-
   transition: 0.3s;
 }
 
@@ -338,4 +313,212 @@ body {
     margin-left: auto;
     margin-right: auto;
   }
+}
+
+.solutions-section {
+  padding: 130px 0;
+  background: #ffffff;
+}
+
+.solutions-title {
+  font-size: 3rem;
+  line-height: 1.2;
+  font-weight: 600;
+  color: #111;
+  margin: 0;
+}
+
+.solutions-intro {
+  color: #6b6b6b;
+  line-height: 1.8;
+  margin: 0;
+  max-width: 500px;
+}
+
+.solutions-slider {
+  position: relative;
+}
+
+.solution-card {
+  display: none;
+  position: relative;
+  min-height: 470px;
+  padding: 60px;
+  background: #f7f7f7;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid #eeeeee;
+}
+
+.solution-card.active {
+  display: block;
+  animation: solutionFade 0.5s ease;
+}
+
+@keyframes solutionFade {
+  from {
+    opacity: 0;
+    transform: translateX(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.solution-number {
+  position: absolute;
+  top: 45px;
+  right: 55px;
+  font-size: 6rem;
+  font-weight: 700;
+  color: #e9e9e9;
+  line-height: 1;
+}
+
+.solution-content {
+  position: relative;
+  z-index: 2;
+  max-width: 650px;
+}
+
+.solution-small-title {
+  display: block;
+  margin-bottom: 20px;
+  color: #2196f3;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.solution-content h3 {
+  font-size: 2.7rem;
+  line-height: 1.2;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 25px;
+}
+
+.solution-content p {
+  color: #6b6b6b;
+  line-height: 1.8;
+  max-width: 580px;
+  margin-bottom: 35px;
+}
+
+.solution-services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.solution-services span {
+  padding: 10px 16px;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  color: #333;
+}
+
+.solution-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.solution-arrow {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  background: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.solution-arrow:hover {
+  background: #111;
+  color: white;
+  border-color: #111;
+}
+
+.solution-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.solution-dot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #d5d5d5;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.solution-dot.active {
+  width: 25px;
+  border-radius: 10px;
+  background: #2196f3;
+}
+
+@media (max-width: 991px) {
+  .solutions-section {
+    padding: 90px 0;
+  }
+
+  .solutions-title {
+    font-size: 2.4rem;
+
+    margin-bottom: 35px;
+  }
+
+  .solution-card {
+    min-height: 520px;
+
+    padding: 40px 30px;
+  }
+
+  .solution-number {
+    top: 25px;
+
+    right: 25px;
+
+    font-size: 4rem;
+  }
+
+  .solution-content h3 {
+    font-size: 2.1rem;
+  }
+}
+
+.solution-services span {
+  padding: 10px 16px;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  color: #333;
+  cursor: default;
+
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.solution-services span:hover {
+  background: #90caf9;
+  border-color: #90caf9;
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(245, 130, 32, 0.18);
 }
