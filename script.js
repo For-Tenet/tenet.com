@@ -3,90 +3,113 @@ const overlay = document.querySelector(".overlay");
 
 menus.forEach((menu) => {
   menu.addEventListener("mouseenter", () => {
-    overlay.classList.add("show");
+    if (window.innerWidth > 576) {
+      overlay.classList.add("show");
+    }
   });
 
   menu.addEventListener("mouseleave", () => {
-    overlay.classList.remove("show");
+    if (window.innerWidth > 576) {
+      overlay.classList.remove("show");
+    }
+  });
+
+  const link = menu.querySelector(".nav-link");
+
+  link.addEventListener("click", (e) => {
+    if (window.innerWidth <= 576) {
+      e.preventDefault();
+      menu.classList.toggle("active");
+    }
   });
 });
 
 const track = document.querySelector(".solutions-track");
+const viewport = document.querySelector(".solutions-viewport");
+const carousel = document.querySelector(".solutions-carousel");
 const originalCards = [...document.querySelectorAll(".solution-card")];
 const dots = document.querySelectorAll(".solution-dot");
-
 const nextButton = document.getElementById("nextSolution");
 const prevButton = document.getElementById("prevSolution");
 
 const totalCards = originalCards.length;
+const autoplayDelay = 5000;
+const transition = "transform 0.65s cubic-bezier(.65, 0, .35, 1)";
 
 let currentIndex = totalCards;
 let autoplayTimer;
 let isMoving = false;
 
 const firstClones = originalCards.map((card) => card.cloneNode(true));
-const lastClones = originalCards.map((card) => card.cloneNode(true));
+const lastClones = originalCards
+  .map((card) => card.cloneNode(true))
+  .reverse();
 
-lastClones.reverse().forEach((card) => {
-  track.prepend(card);
-});
-
-firstClones.forEach((card) => {
-  track.appendChild(card);
-});
+lastClones.forEach((card) => track.prepend(card));
+firstClones.forEach((card) => track.appendChild(card));
 
 const cards = [...track.querySelectorAll(".solution-card")];
 
 function getCardWidth() {
-  const cardWidth = cards[0].offsetWidth;
-  const trackStyle = window.getComputedStyle(track);
-  const gap = parseFloat(trackStyle.gap);
-  return cardWidth + gap;
-}
-
-function moveCarousel(animate = true) {
-  const cardWidth = getCardWidth();
-  const viewport = document.querySelector(".solutions-viewport");
-  const viewportWidth = viewport.offsetWidth;
-  const cardWidthOnly = cards[0].offsetWidth;
-  const sideSpace = (viewportWidth - cardWidthOnly) / 2;
-  track.style.transition = animate
-    ? "transform 0.65s cubic-bezier(.65, 0, .35, 1)"
-    : "none";
-  const offset = sideSpace - currentIndex * cardWidth;
-  track.style.transform = `translateX(${offset}px)`;
-
-  updateDots();
+  const gap = parseFloat(getComputedStyle(track).gap) || 0;
+  return cards[0].offsetWidth + gap;
 }
 
 function updateDots() {
-  let realIndex = currentIndex - totalCards;
-  realIndex = (realIndex + totalCards) % totalCards;
+  const realIndex =
+    (currentIndex - totalCards + totalCards) % totalCards;
+
   dots.forEach((dot, index) => {
     dot.classList.toggle("active", index === realIndex);
   });
 }
 
-function nextSolution() {
-  if (isMoving) return;
-  isMoving = true;
-  currentIndex++;
+function moveCarousel(animate = true) {
+  const cardWidth = getCardWidth();
+  const sideSpace = (viewport.offsetWidth - cards[0].offsetWidth) / 2;
 
-  moveCarousel(true);
+  track.style.transition = animate ? transition : "none";
+  track.style.transform = `translateX(${sideSpace - currentIndex * cardWidth}px)`;
+
+  updateDots();
+}
+
+function move(direction) {
+  if (isMoving) return;
+
+  isMoving = true;
+  currentIndex += direction;
+
+  moveCarousel();
   resetAutoplay();
 }
 
-function previousSolution() {
-  if (isMoving) return;
-  isMoving = true;
-  currentIndex--;
+function nextSolution() {
+  move(1);
+}
 
-  moveCarousel(true);
-  resetAutoplay();
+function previousSolution() {
+  move(-1);
+}
+
+function startAutoplay() {
+  clearInterval(autoplayTimer);
+
+  autoplayTimer = setInterval(() => {
+    if (!isMoving) {
+      currentIndex++;
+      moveCarousel();
+    }
+  }, autoplayDelay);
+}
+
+function resetAutoplay() {
+  startAutoplay();
 }
 
 track.addEventListener("transitionend", () => {
   isMoving = false;
+
   if (currentIndex >= totalCards * 2) {
     currentIndex = totalCards;
     moveCarousel(false);
@@ -101,39 +124,21 @@ track.addEventListener("transitionend", () => {
 dots.forEach((dot, index) => {
   dot.addEventListener("click", () => {
     if (isMoving) return;
+
     currentIndex = totalCards + index;
-    moveCarousel(true);
+    moveCarousel();
     resetAutoplay();
   });
 });
 
 nextButton.addEventListener("click", nextSolution);
-
 prevButton.addEventListener("click", previousSolution);
-
-function startAutoplay() {
-  autoplayTimer = setInterval(() => {
-    if (!isMoving) {
-      currentIndex++;
-      moveCarousel(true);
-    }
-  }, 5000);
-}
-
-function resetAutoplay() {
-  clearInterval(autoplayTimer);
-  startAutoplay();
-}
-
-const carousel = document.querySelector(".solutions-carousel");
 
 carousel.addEventListener("mouseenter", () => {
   clearInterval(autoplayTimer);
 });
 
-carousel.addEventListener("mouseleave", () => {
-  startAutoplay();
-});
+carousel.addEventListener("mouseleave", startAutoplay);
 
 window.addEventListener("resize", () => {
   moveCarousel(false);
