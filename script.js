@@ -41,9 +41,7 @@ let autoplayTimer;
 let isMoving = false;
 
 const firstClones = originalCards.map((card) => card.cloneNode(true));
-const lastClones = originalCards
-  .map((card) => card.cloneNode(true))
-  .reverse();
+const lastClones = originalCards.map((card) => card.cloneNode(true)).reverse();
 
 lastClones.forEach((card) => track.prepend(card));
 firstClones.forEach((card) => track.appendChild(card));
@@ -56,8 +54,7 @@ function getCardWidth() {
 }
 
 function updateDots() {
-  const realIndex =
-    (currentIndex - totalCards + totalCards) % totalCards;
+  const realIndex = (currentIndex - totalCards + totalCards) % totalCards;
 
   dots.forEach((dot, index) => {
     dot.classList.toggle("active", index === realIndex);
@@ -146,3 +143,64 @@ window.addEventListener("resize", () => {
 
 moveCarousel(false);
 startAutoplay();
+
+const serviceModal = document.getElementById("serviceModal");
+const serviceModalClose = document.getElementById("serviceModalClose");
+const serviceModalTitle = document.getElementById("serviceModalTitle");
+const serviceModalText = document.getElementById("serviceModalText");
+
+const serviceInfo = {
+  dot: {
+    title: "DOT Compliance",
+    text: "Support with DOT requirements, compliance processes, and documentation to help keep your carrier operating safely and confidently.",
+  },
+
+  safety: {
+    title: "Safety Management",
+    text: "Practical safety management support designed to help identify risks, improve procedures, and maintain a strong safety culture.",
+  },
+
+  driver: {
+    title: "Driver Qualification",
+    text: "Support with driver qualification requirements and documentation to help ensure your drivers meet the necessary compliance standards.",
+  },
+
+  audits: {
+    title: "Safety Audits",
+    text: "Review of safety practices and documentation to identify potential compliance gaps and help your operation stay prepared.",
+  },
+};
+
+document.addEventListener("click", (event) => {
+  const trigger = event.target.closest(".service-trigger");
+
+  if (!trigger) return;
+
+  event.stopPropagation();
+
+  const service = serviceInfo[trigger.dataset.service];
+
+  if (!service) return;
+
+  serviceModalTitle.textContent = service.title;
+  serviceModalText.textContent = service.text;
+
+  serviceModal.classList.add("active");
+});
+
+serviceModalClose.addEventListener("click", (event) => {
+  event.stopPropagation();
+  serviceModal.classList.remove("active");
+});
+
+serviceModal.addEventListener("click", (event) => {
+  if (event.target === serviceModal) {
+    serviceModal.classList.remove("active");
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    serviceModal.classList.remove("active");
+  }
+});

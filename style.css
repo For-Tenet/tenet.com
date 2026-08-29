@@ -284,6 +284,136 @@ body {
   width: 100%;
 }
 
+.service-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease;
+}
+
+.service-modal.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.service-modal-card {
+  position: relative;
+
+  width: 100%;
+  max-width: 460px;
+
+  padding: 35px;
+
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 18px;
+
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
+
+  transform: translateY(20px) scale(0.96);
+  transition: transform 0.25s ease;
+}
+
+.service-modal.active .service-modal-card {
+  transform: translateY(0) scale(1);
+}
+
+.service-modal-label {
+  display: block;
+
+  margin-bottom: 12px;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+
+  color: #f47b20;
+}
+
+.service-modal-card h3 {
+  margin: 0 0 15px;
+
+  font-size: 28px;
+  font-weight: 600;
+
+  color: #111;
+}
+
+.service-modal-card p {
+  margin: 0 0 25px;
+
+  font-size: 15px;
+  line-height: 1.7;
+
+  color: #666;
+}
+
+.service-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 18px;
+
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  background: transparent;
+
+  font-size: 25px;
+  line-height: 1;
+  color: #777;
+
+  cursor: pointer;
+
+  transition: color 0.2s ease;
+}
+
+.service-modal-close:hover {
+  color: #111;
+}
+
+.service-modal-learn {
+  border: none;
+  border-radius: 8px;
+
+  padding: 11px 22px;
+
+  background: #111;
+  color: #fff;
+
+  font-size: 14px;
+
+  cursor: pointer;
+
+  transition: background 0.2s ease;
+}
+
+.service-modal-learn:hover {
+  background: #f47b20;
+}
+
 .solutions-viewport {
   width: 100%;
   padding: 20px 0 35px;

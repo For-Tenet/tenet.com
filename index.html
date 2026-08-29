@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -23,7 +23,9 @@
   <body>
     <div class="overlay"></div>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top"
+    >
       <div class="container">
         <a class="navbar-brand" href="#home">
           <img
@@ -173,12 +175,36 @@
                 <div class="hero-card">
                   <h5 class="mb-4">TENET Solutions</h5>
 
-                  <div class="solution-item">Safety Management</div>
-                  <div class="solution-item">ELD Monitoring</div>
-                  <div class="solution-item">Dispatch Services</div>
-                  <div class="solution-item">Accounting</div>
-                  <div class="solution-item">New MC Setup</div>
-                  <div class="solution-item">Insurance</div>
+                  <div class="solution-item">
+                    <a class="text-decoration-none text-reset" href="#solutions"
+                      >Safety Management</a
+                    >
+                  </div>
+                  <div class="solution-item">
+                    <a class="text-decoration-none text-reset" href="#solutions"
+                      >ELD Monitoring</a
+                    >
+                  </div>
+                  <div class="solution-item">
+                    <a class="text-decoration-none text-reset" href="#solutions"
+                      >Dispatch Services</a
+                    >
+                  </div>
+                  <div class="solution-item">
+                    <a class="text-decoration-none text-reset" href="#solutions"
+                      >Accounting</a
+                    >
+                  </div>
+                  <div class="solution-item">
+                    <a class="text-decoration-none text-reset" href="#solutions"
+                      >New MC Setup</a
+                    >
+                  </div>
+                  <div class="solution-item">
+                    <a class="text-decoration-none text-reset" href="#solutions"
+                      >Insurance</a
+                    >
+                  </div>
                 </div>
               </div>
             </div>
@@ -269,10 +295,21 @@
                     </p>
 
                     <div class="solution-services">
-                      <span>DOT Compliance</span>
-                      <span>Safety Management</span>
-                      <span>Driver Qualification</span>
-                      <span>Safety Audits</span>
+                      <span class="service-trigger" data-service="dot"
+                        >DOT Compliance</span
+                      >
+
+                      <span class="service-trigger" data-service="safety"
+                        >Safety Management</span
+                      >
+
+                      <span class="service-trigger" data-service="driver"
+                        >Driver Qualification</span
+                      >
+
+                      <span class="service-trigger" data-service="audits"
+                        >Safety Audits</span
+                      >
                     </div>
                   </div>
                 </div>
@@ -406,8 +443,32 @@
             </button>
           </div>
 
+          <div class="service-modal" id="serviceModal">
+            <div class="service-modal-card">
+              <button class="service-modal-close" id="serviceModalClose" type="button">
+                &times;
+              </button>
+
+              <span class="service-modal-label">SAFETY & COMPLIANCE</span>
+
+              <h3 id="serviceModalTitle">DOT Compliance</h3>
+
+              <p id="serviceModalText">
+                Support for maintaining DOT compliance and keeping your
+                operation prepared.
+              </p>
+
+              <button class="service-modal-learn" id="serviceModalLearn" type="button" >
+                <a href="#contact" class="text-decoration-none text-reset">Learn More</a>
+              </button>
+            </div>
+          </div>
+
           <div class="solution-dots">
-            <button class="solution-dot active" aria-label="Go to solution 1"></button>
+            <button
+              class="solution-dot active"
+              aria-label="Go to solution 1"
+            ></button>
             <button class="solution-dot" aria-label="Go to solution 2"></button>
             <button class="solution-dot" aria-label="Go to solution 3"></button>
             <button class="solution-dot" aria-label="Go to solution 4"></button>
@@ -521,4 +582,3 @@
     <script src="script.js"></script>
   </body>
 </html>
-
