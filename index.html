@@ -330,10 +330,23 @@
                     </p>
 
                     <div class="solution-services">
-                      <span>ELD Management</span>
-                      <span>GPS Tracking</span>
-                      <span>Fleet Monitoring</span>
-                      <span>Driver Monitoring</span>
+                      <span class="service-trigger" data-service="eld">
+                        ELD Monitoring
+                      </span>
+                      <span class="service-trigger" data-service="gps">
+                        GPS Tracking
+                      </span>
+
+                      <span class="service-trigger" data-service="fleet">
+                        Fleet Monitoring
+                      </span>
+
+                      <span
+                        class="service-trigger"
+                        data-service="driver-monitoring"
+                      >
+                        Driver Monitoring
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -354,10 +367,30 @@
                     </p>
 
                     <div class="solution-services">
-                      <span>ELD Dispatch</span>
-                      <span>Load Coordination</span>
-                      <span>Fleet Operations</span>
-                      <span>Driver Support</span>
+                      <span class="service-trigger" data-service="eld-dispatch">
+                        ELD Dispatch
+                      </span>
+
+                      <span
+                        class="service-trigger"
+                        data-service="load-coordination"
+                      >
+                        Load Coordination
+                      </span>
+
+                      <span
+                        class="service-trigger"
+                        data-service="fleet-operations"
+                      >
+                        Fleet Operations
+                      </span>
+
+                      <span
+                        class="service-trigger"
+                        data-service="driver-support"
+                      >
+                        Driver Support
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -378,10 +411,24 @@
                     </p>
 
                     <div class="solution-services">
-                      <span>Accounting</span>
-                      <span>IFTA</span>
-                      <span>Payroll Support</span>
-                      <span>Financial Reporting</span>
+                      <span class="service-trigger" data-service="accounting">
+                        Accounting
+                      </span>
+
+                      <span class="service-trigger" data-service="ifta">
+                        IFTA
+                      </span>
+
+                      <span class="service-trigger" data-service="payroll">
+                        Payroll Support
+                      </span>
+
+                      <span
+                        class="service-trigger"
+                        data-service="financial-reporting"
+                      >
+                        Financial Reporting
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -400,10 +447,30 @@
                     </p>
 
                     <div class="solution-services">
-                      <span>New MC Setup</span>
-                      <span>DOT Registration</span>
-                      <span>MC Reinstatement</span>
-                      <span>Carrier Support</span>
+                      <span class="service-trigger" data-service="mc-setup">
+                        New MC Setup
+                      </span>
+
+                      <span
+                        class="service-trigger"
+                        data-service="dot-registration"
+                      >
+                        DOT Registration
+                      </span>
+
+                      <span
+                        class="service-trigger"
+                        data-service="mc-reinstatement"
+                      >
+                        MC Reinstatement
+                      </span>
+
+                      <span
+                        class="service-trigger"
+                        data-service="carrier-support"
+                      >
+                        Carrier Support
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -424,10 +491,33 @@
                     </p>
 
                     <div class="solution-services">
-                      <span>Commercial Insurance</span>
-                      <span>Claims Support</span>
-                      <span>Business Consulting</span>
-                      <span>Operational Guidance</span>
+                      <span
+                        class="service-trigger"
+                        data-service="commercial-insurance"
+                      >
+                        Commercial Insurance
+                      </span>
+
+                      <span
+                        class="service-trigger"
+                        data-service="claims-support"
+                      >
+                        Claims Support
+                      </span>
+
+                      <span
+                        class="service-trigger"
+                        data-service="business-consulting"
+                      >
+                        Business Consulting
+                      </span>
+
+                      <span
+                        class="service-trigger"
+                        data-service="operational-guidance"
+                      >
+                        Operational Guidance
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -445,11 +535,15 @@
 
           <div class="service-modal" id="serviceModal">
             <div class="service-modal-card">
-              <button class="service-modal-close" id="serviceModalClose" type="button">
+              <button
+                class="service-modal-close"
+                id="serviceModalClose"
+                type="button"
+              >
                 &times;
               </button>
 
-              <span class="service-modal-label">SAFETY & COMPLIANCE</span>
+              <span class="service-modal-label" id="serviceModalLabel"></span>
 
               <h3 id="serviceModalTitle">DOT Compliance</h3>
 
@@ -458,8 +552,17 @@
                 operation prepared.
               </p>
 
-              <button class="service-modal-learn" id="serviceModalLearn" type="button" >
-                <a href="#contact" class="text-decoration-none text-reset">Learn More</a>
+              <div class="service-modal-contact">
+                <span>Need a quote or pricing?</span>
+                <a href="#contact" class="modal-contact-link">Contact Us</a>
+              </div>
+
+              <button
+                class="service-modal-learn"
+                id="serviceModalLearn"
+                type="button"
+              >
+                <a href="#contact" class="text-decoration-none text-reset modal-contact-link"> Learn More </a>
               </button>
             </div>
           </div>

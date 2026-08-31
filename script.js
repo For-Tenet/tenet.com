@@ -148,26 +148,151 @@ const serviceModal = document.getElementById("serviceModal");
 const serviceModalClose = document.getElementById("serviceModalClose");
 const serviceModalTitle = document.getElementById("serviceModalTitle");
 const serviceModalText = document.getElementById("serviceModalText");
+const serviceModalLabel = document.getElementById("serviceModalLabel");
 
 const serviceInfo = {
   dot: {
     title: "DOT Compliance",
+    category: "SAFETY & COMPLIANCE",
     text: "Support with DOT requirements, compliance processes, and documentation to help keep your carrier operating safely and confidently.",
   },
 
   safety: {
     title: "Safety Management",
+    category: "SAFETY & COMPLIANCE",
     text: "Practical safety management support designed to help identify risks, improve procedures, and maintain a strong safety culture.",
   },
 
   driver: {
     title: "Driver Qualification",
+    category: "SAFETY & COMPLIANCE",
     text: "Support with driver qualification requirements and documentation to help ensure your drivers meet the necessary compliance standards.",
   },
 
   audits: {
     title: "Safety Audits",
+    category: "SAFETY & COMPLIANCE",
     text: "Review of safety practices and documentation to identify potential compliance gaps and help your operation stay prepared.",
+  },
+
+  eld: {
+    title: "ELD Monitoring",
+    category: "ELD & FLEET MANAGEMENT",
+    text: "Stay on top of driver hours, electronic logs, and fleet activity with reliable ELD monitoring designed to improve compliance and visibility.",
+  },
+
+  gps: {
+    title: "GPS Tracking",
+    category: "ELD & FLEET MANAGEMENT",
+    text: "Real-time vehicle location and fleet visibility to help you monitor movement, improve coordination, and maintain better control of your operation.",
+  },
+
+  fleet: {
+    title: "Fleet Monitoring",
+    category: "ELD & FLEET MANAGEMENT",
+    text: "Comprehensive fleet monitoring designed to give you better visibility into vehicle activity, performance, and day-to-day operations.",
+  },
+
+  "driver-monitoring": {
+    title: "Driver Monitoring",
+    category: "ELD & FLEET MANAGEMENT",
+    text: "Monitor driver activity and performance to help identify risks, improve accountability, and support safer fleet operations.",
+  },
+
+  "eld-dispatch": {
+    title: "ELD Dispatch",
+    category: "DISPATCH & OPERATIONS",
+    text: "Efficient dispatch support designed to coordinate drivers, manage routes, and keep your fleet operations running smoothly.",
+  },
+
+  "load-coordination": {
+    title: "Load Coordination",
+    category: "DISPATCH & OPERATIONS",
+    text: "Support with load planning and coordination to help connect available drivers with loads and keep your operation organized.",
+  },
+
+  "fleet-operations": {
+    title: "Fleet Operations",
+    category: "DISPATCH & OPERATIONS",
+    text: "Operational support focused on improving fleet coordination, communication, and day-to-day efficiency.",
+  },
+
+  "driver-support": {
+    title: "Driver Support",
+    category: "DISPATCH & OPERATIONS",
+    text: "Reliable support for drivers throughout their daily operations, helping resolve issues and maintain smooth communication.",
+  },
+
+  accounting: {
+    title: "Accounting",
+    category: "ACCOUNTING & BUSINESS",
+    text: "Professional accounting support designed to help keep your financial records organized, accurate, and up to date.",
+  },
+
+  ifta: {
+    title: "IFTA",
+    category: "ACCOUNTING & BUSINESS",
+    text: "Support with IFTA reporting and fuel tax documentation to help keep your operation organized and compliant.",
+  },
+
+  payroll: {
+    title: "Payroll Support",
+    category: "ACCOUNTING & BUSINESS",
+    text: "Reliable payroll support to help organize driver and employee compensation while keeping payroll processes accurate and efficient.",
+  },
+
+  "financial-reporting": {
+    title: "Financial Reporting",
+    category: "ACCOUNTING & BUSINESS",
+    text: "Clear financial reporting that helps you understand your business performance and make informed operational decisions.",
+  },
+
+  "mc-setup": {
+    title: "New MC Setup",
+    category: "CARRIER SETUP",
+    text: "Guidance and support for setting up a new Motor Carrier authority and getting your carrier operation ready to begin business.",
+  },
+
+  "dot-registration": {
+    title: "DOT Registration",
+    category: "CARRIER SETUP",
+    text: "Support with DOT registration requirements and documentation to help establish your carrier operation properly.",
+  },
+
+  "mc-reinstatement": {
+    title: "MC Reinstatement",
+    category: "CARRIER SETUP",
+    text: "Assistance with the reinstatement process for inactive or revoked Motor Carrier authority.",
+  },
+
+  "carrier-support": {
+    title: "Carrier Support",
+    category: "CARRIER SETUP",
+    text: "Ongoing support for carriers with compliance, operational, and administrative needs as your business grows.",
+  },
+
+  "commercial-insurance": {
+    title: "Commercial Insurance",
+    category: "INSURANCE",
+    text: "Support in navigating commercial insurance needs and helping you understand coverage requirements for your transportation operation.",
+  },
+
+  "claims-support": {
+    title: "Claims Support",
+    category: "INSURANCE",
+    text: "Assistance with claims-related processes and documentation to help you navigate incidents efficiently and stay organized.",
+  },
+
+  "business-consulting": {
+    title: "Business Consulting",
+    category: "INSURANCE",
+    text: "Practical consulting focused on improving your transportation business, operations, and overall business strategy.",
+  },
+
+  "operational-guidance": {
+    title: "Operational Guidance",
+    category: "INSURANCE",
+    text: "Hands-on guidance to help streamline daily operations, improve efficiency, and build a stronger transportation business.",
   },
 };
 
@@ -182,6 +307,7 @@ document.addEventListener("click", (event) => {
 
   if (!service) return;
 
+  serviceModalLabel.textContent = service.category;
   serviceModalTitle.textContent = service.title;
   serviceModalText.textContent = service.text;
 
@@ -203,4 +329,19 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     serviceModal.classList.remove("active");
   }
+});
+
+document.querySelectorAll(".modal-contact-link").forEach((link) => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    serviceModal.classList.remove("active");
+
+    setTimeout(() => {
+      document.querySelector("#contact").scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 250);
+  });
 });
