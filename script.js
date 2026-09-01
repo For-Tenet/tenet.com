@@ -131,6 +131,36 @@ dots.forEach((dot, index) => {
 nextButton.addEventListener("click", nextSolution);
 prevButton.addEventListener("click", previousSolution);
 
+let touchStartX = 0;
+let touchEndX = 0;
+
+carousel.addEventListener(
+  "touchstart",
+  (event) => {
+    touchStartX = event.touches[0].clientX;
+  },
+  { passive: true },
+);
+
+carousel.addEventListener(
+  "touchend",
+  (event) => {
+    touchEndX = event.changedTouches[0].clientX;
+
+    const swipeDistance = touchEndX - touchStartX;
+    const minimumSwipe = 50;
+
+    if (swipeDistance < -minimumSwipe) {
+      nextSolution();
+    }
+
+    if (swipeDistance > minimumSwipe) {
+      previousSolution();
+    }
+  },
+  { passive: true },
+);
+
 carousel.addEventListener("mouseenter", () => {
   clearInterval(autoplayTimer);
 });

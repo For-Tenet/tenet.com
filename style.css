@@ -1133,6 +1133,11 @@ body {
     height: auto;
   }
 
+  .solution-prev,
+  .solution-next {
+    display: none;
+  }
+
   .solution-content {
     max-width: 100%;
   }
@@ -1162,12 +1167,9 @@ body {
     height: 44px;
   }
 
-  .solution-prev {
-    left: 10px;
-  }
-
+  .solution-prev,
   .solution-next {
-    right: 10px;
+    display: none;
   }
 
   .service-modal {
