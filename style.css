@@ -1080,7 +1080,7 @@ body {
   }
 
   .Safety-first-img {
-    margin-left: 0px;
+    margin-left: 0;
   }
 
   .about-title,
@@ -1096,14 +1096,19 @@ body {
     gap: 15px;
   }
 
-    .solution-card {
+  .solution-card {
     flex-basis: 100%;
     min-height: 560px;
     padding: 30px 22px;
     border-radius: 20px;
   }
 
-  #card-01,#card-02,#card-03,#card-04,#card-05,#card-06 {
+  #card-01,
+  #card-02,
+  #card-03,
+  #card-04,
+  #card-05,
+  #card-06 {
     position: absolute;
     right: 50%;
     top: auto;
@@ -1133,7 +1138,7 @@ body {
   }
 
   .solution-content h3 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     margin-bottom: 18px;
   }
 
@@ -1145,17 +1150,6 @@ body {
 
   .solution-services {
     gap: 8px;
-  }
-
-  .solution-services span {
-    padding: 8px 11px;
-    font-size: 0.78rem;
-  }
-
-}
-
-  .solution-content h3 {
-    font-size: 2rem;
   }
 
   .solution-services span {
