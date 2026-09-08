@@ -1,17 +1,29 @@
 :root {
-  --accent: #2196f3;
-  --accent-light: #90caf9;
+  --accent: #f28c28;
+  --accent-light: #ffb45c;
 
-  --dark: #111;
-  --text: #666;
-  --muted: #888;
+  --dark: #111111;
+  --dark-section: #1a1a1a;
+  --dark-card: #222222;
 
-  --light-bg: #f8f8f8;
-  --soft-bg: #f7f7f7;
+  --text: #555555;
+  --muted: #888888;
 
-  --white: #fff;
-  --border: #eee;
-  --border-light: #e5e5e5;
+  --text-light: #ffffff;
+  --text-dark: #111111;
+
+  --white: #ffffff;
+
+  --light-bg: #f7f7f5;
+  --soft-bg: #fafaf8;
+
+  --border: #e6e6e2;
+  --border-light: #eeeeea;
+  --border-dark: #333333;
+
+  --shadow-sm: 0 8px 25px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 20px 60px rgba(0, 0, 0, 0.08);
+  --shadow-dark: 0 20px 60px rgba(0, 0, 0, 0.25);
 
   --radius: 20px;
   --transition: 0.3s ease;
@@ -30,10 +42,6 @@ body {
   font-family: Arial, sans-serif;
   color: var(--dark);
 }
-
-/* =========================
-   NAVBAR
-========================= */
 
 .tenet-icon {
   width: 100px;
@@ -71,10 +79,6 @@ body {
 .nav-link:hover::after {
   width: 100%;
 }
-
-/* =========================
-   MEGA MENU
-========================= */
 
 .mega-menu {
   position: relative;
@@ -120,10 +124,6 @@ body {
   color: var(--accent);
 }
 
-/* =========================
-   OVERLAY
-========================= */
-
 .overlay {
   position: fixed;
   inset: 0;
@@ -141,13 +141,10 @@ body {
   visibility: visible;
 }
 
-/* =========================
-   HERO
-========================= */
-
 .hero {
-  padding-top: 90px;
+  /* padding-top: 90px; */
   background: var(--white);
+  color: var(--text-dark);
 }
 
 .hero-tag {
@@ -227,17 +224,14 @@ body {
   transform: translateX(8px);
 }
 
-/* =========================
-   ABOUT / SOLUTIONS
-========================= */
-
 .about-section,
 .solutions-section {
   padding: 130px 0;
 }
 
 .about-section {
-  background: #f8f9fa;
+  background: var(--dark-section);
+  color: var(--text-light);
 }
 
 .Safety-first-img {
@@ -258,15 +252,19 @@ body {
 .about-title,
 .solutions-title {
   margin: 0;
-  color: var(--dark);
+  color: var(--text-light);
   font-size: 3rem;
   font-weight: 600;
   line-height: 1.2;
 }
 
+.solutions-title {
+  color: var(--text-dark) !important;
+}
+
 .about-text {
   margin-bottom: 25px;
-  color: #222;
+  color: var(--text-light);
   font-size: 1.6rem;
   font-weight: 500;
   line-height: 1.5;
@@ -284,7 +282,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  color: var(--dark);
+  color: var(--text-light);
   font-weight: 600;
   text-decoration: none;
   transition: var(--transition);
@@ -304,7 +302,8 @@ body {
 }
 
 .solutions-section {
-  background: var(--white);
+  background: var(--light-bg);
+  color: var(--text-dark);
 }
 
 .solutions-intro {
@@ -313,10 +312,6 @@ body {
   color: var(--text);
   line-height: 1.8;
 }
-
-/* =========================
-   SOLUTIONS CAROUSEL
-========================= */
 
 .solutions-carousel {
   position: relative;
@@ -429,10 +424,6 @@ body {
   line-height: 1.8;
 }
 
-/* =========================
-   SERVICE PILLS
-========================= */
-
 .solution-services {
   display: flex;
   flex-wrap: wrap;
@@ -462,10 +453,6 @@ body {
   transform: translateY(-3px);
   box-shadow: 0 6px 15px rgba(33, 150, 243, 0.18);
 }
-
-/* =========================
-   SERVICE MODAL
-========================= */
 
 .service-modal {
   position: fixed;
@@ -598,10 +585,6 @@ body {
   transform: translateY(-2px);
 }
 
-/* =========================
-   CAROUSEL ARROWS
-========================= */
-
 .solution-arrow {
   position: absolute;
   top: 50%;
@@ -661,13 +644,17 @@ body {
   background: var(--accent);
 }
 
-/* =========================
-   CONTACT
-========================= */
+.contact-section h1,
+.contact-section h2,
+.contact-section h3,
+.contact-section p {
+  color: var(--text-light) !important;
+}
 
 .contact-section {
   padding: 120px 8%;
-  background: var(--light-bg);
+  background: var(--dark);
+  color: var(--muted) !important;
 }
 
 .contact-container {
@@ -1219,5 +1206,56 @@ body {
     flex-direction: column;
     align-items: flex-start;
     gap: 15px;
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-card {
+  opacity: 0;
+  transform: translateY(50px) scale(0.97);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.reveal-card.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.reveal-delay-1 {
+  transition-delay: 0.1s;
+}
+
+.reveal-delay-2 {
+  transition-delay: 0.2s;
+}
+
+.reveal-delay-3 {
+  transition-delay: 0.3s;
+}
+
+.reveal-delay-4 {
+  transition-delay: 0.4s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-card {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
